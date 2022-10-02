@@ -1,7 +1,15 @@
 {
     "@@locale": "en",
     "startButton": "Tap to Start",
-    "@StartButton": {
+    "@startButton": {
         "description": "Text Button shown at startup"
+    },
+    "playButton": "PLAY",
+    "@playButton": {
+        "description": "Play button text"
+    },
+    "settingsButton": "Settings",
+    "@settingsButton": {
+        "description": "Settings button text"
     }
 }

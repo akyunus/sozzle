@@ -10,10 +10,10 @@ abstract class ThemeState {
 
 class ThemeStateDark implements ThemeState {
   const ThemeStateDark();
-  
+
   @override
   Color get backgroundColor => const Color(0xFF83B3DE);
-  
+
   @override
   Color get primaryTextColor => const Color(0xFFF5F5F5);
 

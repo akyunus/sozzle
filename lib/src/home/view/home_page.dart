@@ -12,18 +12,19 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
         return Scaffold(
-            backgroundColor: state.backgroundColor,
-            body: Center(
-                child: Container(
+          backgroundColor: state.backgroundColor,
+          body: Center(
+            child: DecoratedBox(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  state.primaryColor,
-                  state.secondaryColor,
-                ],
-              )),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    state.primaryColor,
+                    state.secondaryColor,
+                  ],
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -44,13 +45,16 @@ class HomePage extends StatelessWidget {
                           context.read<UserStatsCubit>().advanceLevelUp();
                         },
                         child: Text(
-                            'Current Level: ${state.progress.currentLevel}'),
+                          'Current Level: ${state.progress.currentLevel}',
+                        ),
                       );
                     },
                   ),
                 ],
               ),
-            )));
+            ),
+          ),
+        );
       },
     );
   }
