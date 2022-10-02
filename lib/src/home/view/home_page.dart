@@ -12,34 +12,45 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: state.backgroundColor,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  'Sozzle Home Page',
-                  style: TextStyle(
-                    color: state.primaryTextColor,
-                    fontSize: 24,
+            backgroundColor: state.backgroundColor,
+            body: Center(
+                child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  state.primaryColor,
+                  state.secondaryColor,
+                ],
+              )),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      'Sozzle Home Page',
+                      style: TextStyle(
+                        color: state.primaryTextColor,
+                        fontSize: 24,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              BlocBuilder<UserStatsCubit, UserStatsState>(
-                builder: (context, state) {
-                  return TextButton(
-                    onPressed: () {
-                      // TODO(any): route to game play
-                      context.read<UserStatsCubit>().advanceLevelUp();
+                  BlocBuilder<UserStatsCubit, UserStatsState>(
+                    builder: (context, state) {
+                      return TextButton(
+                        onPressed: () {
+                          // TODO(any): route to game play
+                          context.read<UserStatsCubit>().advanceLevelUp();
+                        },
+                        child: Text(
+                            'Current Level: ${state.progress.currentLevel}'),
+                      );
                     },
-                    child:
-                        Text('Current Level: ${state.progress.currentLevel}'),
-                  );
-                },
+                  ),
+                ],
               ),
-            ],
-          ),
-        );
+            )));
       },
     );
   }
